@@ -4,7 +4,7 @@ function Card({ card, onCardClick }) {
   }
 
   return (
-    <>
+    <li className="elements__item">
       <div className="elements__card">
         <button
           type="button"
@@ -15,6 +15,7 @@ function Card({ card, onCardClick }) {
           className="elements__photo"
           src={card.link}
           onClick={handleClick}
+          alt={card.name}
         />
       </div>
       <div className="elements__subline">
@@ -28,7 +29,7 @@ function Card({ card, onCardClick }) {
           <p className="elements__likes-quantity">{card.likes.length}</p>
         </div>
       </div>
-    </>
+    </li>
   );
 }
 

@@ -6,25 +6,25 @@ import Main from "../Main/Main.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(0);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
 
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(0);
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(0);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
 
-  const [selectedCard, setSelectedCard] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(0);
 
   function handleCardClick(card) {
     console.log(card);
@@ -35,7 +35,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard(0);
   }
 
   return (
@@ -81,11 +81,9 @@ function App() {
               />
               <span className="popup__error description-input-error"></span>
             </label>
-            <button type="submit" className="popup__save-button button">
-              Сохранить
-            </button>
           </>
         }
+        nameBtn="Сохранить"
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
       />
@@ -119,11 +117,9 @@ function App() {
               />
               <span className="popup__error link-input-error"></span>
             </div>
-            <button type="submit" className="popup__save-button button">
-              Создать
-            </button>
           </>
         }
+        nameBtn="Создать"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       />
@@ -131,16 +127,8 @@ function App() {
       <PopupWithForm
         title="Вы уверены?"
         name="delete"
-        children={
-          <>
-            <button
-              type="button"
-              className="popup__save-button popup-delete__save-button button"
-            >
-              Да
-            </button>
-          </>
-        }
+        children={null}
+        nameBtn="Да"
       />
 
       <PopupWithForm
@@ -159,11 +147,9 @@ function App() {
               />
               <span className="popup__error link-avatar-input-error"></span>
             </div>
-            <button type="submit" className="popup__save-button button">
-              Сохранить
-            </button>
           </>
         }
+        nameBtn="Сохранить"
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
       />

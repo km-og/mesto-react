@@ -22,7 +22,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
         });
     }
     getUserData();
-  });
+  }, []);
 
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -76,9 +76,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
         <section className="elements">
           <ul className="elements__table">
             {cards.map((card) => (
-              <li className="elements__item" key={card._id}>
-                <Card card={card} onCardClick={onCardClick} />
-              </li>
+              <Card card={card} onCardClick={onCardClick} key={card._id} />
             ))}
           </ul>
         </section>
