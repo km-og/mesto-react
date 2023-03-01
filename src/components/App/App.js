@@ -6,25 +6,25 @@ import Main from "../Main/Main.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(0);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
 
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(0);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(0);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
 
-  const [selectedCard, setSelectedCard] = useState(0);
+  const [selectedCard, setSelectedCard] = useState({});
 
   function handleCardClick(card) {
     console.log(card);
@@ -35,7 +35,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard(0);
+    setSelectedCard({});
   }
 
   return (

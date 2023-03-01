@@ -1,6 +1,13 @@
 function ImagePopup({ card, onClose }) {
+  console.log(card);
+  console.log(Object.keys(card).length);
+
   return (
-    <div className={`popup popup-img ${card ? "popup_opened" : ""}`}>
+    <div
+      className={`popup popup-img ${
+        Object.keys(card).length !== 0 ? "popup_opened" : ""
+      }`}
+    >
       <div className="popup-img__content">
         <button
           type="button"
