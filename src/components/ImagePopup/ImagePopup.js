@@ -1,7 +1,4 @@
 function ImagePopup({ card, onClose }) {
-  console.log(card);
-  console.log(Object.keys(card).length);
-
   return (
     <div
       className={`popup popup-img ${

@@ -53,6 +53,7 @@ class Api {
   likeCard(id, methodType) {
     return fetch(`${this._url}/${id}/likes`, {
       method: methodType,
+      // method: `${isLiked ? "PUT" : "DELETE"}`,
       headers: this._headers,
     }).then((response) => {
       return this._checkingStatus(response);
@@ -92,4 +93,16 @@ const configApiCards = {
 
 const apiCards = new Api(configApiCards);
 
-export { apiUserInfo, apiCards };
+// отправка отредактированных данных профиля на сервер
+
+const configApiNewUserInfo = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-58/users/me",
+  headers: {
+    authorization: "c10b13af-a0c9-404f-bfd6-c1073097221f",
+    "Content-Type": "application/json",
+  },
+};
+
+const apiNewUserInfo = new Api(configApiNewUserInfo);
+
+export { apiUserInfo, apiCards, apiNewUserInfo };
