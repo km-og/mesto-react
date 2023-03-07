@@ -33,6 +33,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(data),
     }).then((response) => {
+      console.log(response);
       return this._checkingStatus(response);
     });
   }

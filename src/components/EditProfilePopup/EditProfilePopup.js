@@ -20,7 +20,7 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
@@ -46,7 +46,7 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
               name="editHeading"
               placeholder="Имя"
               // defaultValue="Жак-Ив Кусто"
-              value={name}
+              value={name || ""}
               onChange={handleChangeName}
               required
               minLength="2"
@@ -62,7 +62,7 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
               name="editSubheading"
               placeholder="О себе"
               // defaultValue="Исследователь океана"
-              value={description}
+              value={description || ""}
               onChange={handleChangeDescription}
               required
               minLength="2"

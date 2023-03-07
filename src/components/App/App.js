@@ -66,7 +66,6 @@ function App() {
         .getData()
         .then((data) => {
           setCards(data);
-          // console.log(data);
         })
         .catch((err) => {
           console.log(err);
@@ -79,48 +78,75 @@ function App() {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     const methodType = isLiked ? "DELETE" : "PUT";
     // console.log(methodType);
-    apiCards.likeCard(card._id, methodType).then((newCard) => {
-      // console.log(newCard); данные карточки, которую лайкнули
-      setCards((state) =>
-        // console.log(state)  массив со всеми карточками
-        state.map((c) =>
-          // console.log(c)  каждая карточка этого массива
-          c._id === card._id ? newCard : c
-        )
-      );
-    });
+    apiCards
+      .likeCard(card._id, methodType)
+      .then((newCard) => {
+        // console.log(newCard); данные карточки, которую лайкнули
+        setCards((state) =>
+          // console.log(state)  массив со всеми карточками
+          state.map((c) =>
+            // console.log(c)  каждая карточка этого массива
+            c._id === card._id ? newCard : c
+          )
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleCardDelete(card) {
-    apiCards.deleteCardBtn(card._id).then((newCard) => {
-      setCards((state) => {
-        const newState = state.filter((item) => {
-          return item._id !== card._id;
+    apiCards
+      .deleteCardBtn(card._id)
+      .then((newCard) => {
+        setCards((state) => {
+          const newState = state.filter((item) => {
+            return item._id !== card._id;
+          });
+          return newState;
         });
-        return newState;
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
   }
 
+  // сделать сначала
+
   function handleUpdateUser(data) {
-    apiNewUserInfo.sendData(data, "PATCH").then((newData) => {
-      setCurrentUser(newData);
-    });
-    closeAllPopups();
+    apiNewUserInfo
+      .sendData(data, "PATCH")
+      .then((newData) => {
+        setCurrentUser(newData);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleUpdateAvatar(data) {
-    apiNewUserInfo.changeAvatar(data).then((newAvatar) => {
-      setCurrentUser(newAvatar);
-    });
-    closeAllPopups();
+    apiNewUserInfo
+      .changeAvatar(data)
+      .then((newAvatar) => {
+        setCurrentUser(newAvatar);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleAddPlaceSubmit(data) {
-    apiCards.sendData(data, "POST").then((newCard) => {
-      setCards([newCard, ...cards]);
-    });
-    closeAllPopups();
+    apiCards
+      .sendData(data, "POST")
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
